@@ -10,4 +10,9 @@ public class UndirectedGraph {
 		this.nodes = nodes;
 	}
 	
+	public void setNeighbourhoodMatrix(NeighbourhoodMatrix nm){
+		this.neighbourhoodMatrix = nm;
+	}
+	
+	
 }
