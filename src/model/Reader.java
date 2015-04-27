@@ -1,5 +1,5 @@
 package model;
 
 public interface Reader {
-	public UndirectedGraph read(String filePath);
+	public UndirectedGraph readTXT(String filePath);
 }
