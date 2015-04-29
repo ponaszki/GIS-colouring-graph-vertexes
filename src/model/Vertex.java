@@ -1,17 +1,17 @@
 package model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Vertex {
 	private int nodeNumber;
-	private LinkedList <Vertex> adjNodes;
+	private ArrayList <Vertex> adjNodes;
 	/**
 	 * Constructor creating graph node unrelated to other vertexes.
 	 * @param number - vertex number
 	 */
 	public Vertex(int number){
 		this.nodeNumber = number;
-		adjNodes = new LinkedList<Vertex>();
+		adjNodes = new ArrayList<Vertex>();
 	}
 	
 	/**
@@ -19,7 +19,7 @@ public class Vertex {
 	 * @param number - vertex number
 	 * @param adj - adjacency list
 	 */
-	public Vertex(int number, LinkedList<Vertex> adj){
+	public Vertex(int number, ArrayList<Vertex> adj){
 		this.nodeNumber = number;
 		adjNodes = adj;
 	}
