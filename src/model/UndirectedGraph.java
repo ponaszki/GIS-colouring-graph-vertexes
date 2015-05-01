@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 public class UndirectedGraph {
 	private ArrayList<Vertex> nodes;
+	private NeighbourhoodMatrix neighbourhoodMatrix;
+
+	public NeighbourhoodMatrix getNeighbourhoodMatrix() {
+		return neighbourhoodMatrix;
+	}
+
 	public ArrayList<Vertex> getNodes() {
 		return nodes;
 	}
@@ -13,19 +19,17 @@ public class UndirectedGraph {
 		this.nodes = nodes;
 	}
 
-	private NeighbourhoodMatrix neighbourhoodMatrix;
-	
 	public UndirectedGraph(ArrayList<Vertex> vl) {
 		this.nodes = vl;
 	}
-	
-	public void setNeighbourhoodMatrix(NeighbourhoodMatrix nm){
+
+	public void setNeighbourhoodMatrix(NeighbourhoodMatrix nm) {
 		this.neighbourhoodMatrix = nm;
 	}
-	
+
 	public String toString(){
 		String result = new String();
-		result = nodes.toString() + "\n"+ neighbourhoodMatrix.toString();
+		result = "Nodes:\n" + nodes.toString() + "NeigbourhoodMatrix\n"+ neighbourhoodMatrix.toString();
 		return result;
 	}
 }

@@ -13,8 +13,10 @@ public class MainClass {
 			ReaderTxt reader = new ReaderTxt();
 			try {
 				UndirectedGraph graph = reader.readTXT(new String(args[0]));
-				String s = graph.toString();
 				System.out.println(graph);
+				SMAlgorithm sma = new SMAlgorithm(graph);
+				System.out.println(sma);
+				
 			} catch (IOException e) {	
 				e.printStackTrace();
 				System.err.println("Nieprawidłowe wczytanie");

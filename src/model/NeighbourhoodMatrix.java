@@ -2,26 +2,17 @@ package model;
 
 
 public class NeighbourhoodMatrix {
-	public int COLUMNS_NUMBER = 0;
-	public int ROWS_NUMBER = 0;
+	public int MATRIX_SIZE = 0;
 	private int matrix[][];
 
 	public NeighbourhoodMatrix() {
-		COLUMNS_NUMBER = 0;
-		ROWS_NUMBER = 0;
-		this.matrix = new int[COLUMNS_NUMBER][ROWS_NUMBER];
+		MATRIX_SIZE=0;
+		this.matrix = new int[MATRIX_SIZE][MATRIX_SIZE];
 	}
 	public NeighbourhoodMatrix(int size) {
-		COLUMNS_NUMBER = size;
-		ROWS_NUMBER = size;
-		this.matrix = new int[COLUMNS_NUMBER][ROWS_NUMBER];
-	}
-	public NeighbourhoodMatrix(int cols, int rows) {
-		COLUMNS_NUMBER = cols;
-		ROWS_NUMBER = rows;
-		this.matrix = new int[COLUMNS_NUMBER][ROWS_NUMBER];
-	}
-	
+		MATRIX_SIZE = size;
+		this.matrix = new int[MATRIX_SIZE][MATRIX_SIZE];
+	}	
 	
 	//getters
 	public int getElement(int row, int col) throws ArrayIndexOutOfBoundsException{
@@ -33,9 +24,9 @@ public class NeighbourhoodMatrix {
 	}
 	
 	//setters
-	public void setElement(int row, int col, int vertexNumber) throws ArrayIndexOutOfBoundsException{
+	public void setElement(int row, int col, int value) throws ArrayIndexOutOfBoundsException{
 		try{
-			this.matrix[row][col] = vertexNumber;
+			this.matrix[row][col] = value;
 		}catch(ArrayIndexOutOfBoundsException e){
 			throw e;
 		}
