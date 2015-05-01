@@ -23,5 +23,9 @@ public class UndirectedGraph {
 		this.neighbourhoodMatrix = nm;
 	}
 	
-	
+	public String toString(){
+		String result = new String();
+		result = nodes.toString() + "\n"+ neighbourhoodMatrix.toString();
+		return result;
+	}
 }

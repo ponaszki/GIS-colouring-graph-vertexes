@@ -10,10 +10,11 @@ public class ReaderTxt implements Reader {
 	@Override
 	public UndirectedGraph readTXT(String filePath) throws IOException {
 		BufferedReader inputStream = null;
+		UndirectedGraph ug = null;
+		NeighbourhoodMatrix nm = null;
 		try {
 			inputStream = new BufferedReader(new FileReader(filePath));
-			UndirectedGraph ug = null;
-			NeighbourhoodMatrix nm = null;
+
 			String line;
 			boolean isFirstLine = true;
 			ArrayList<Vertex> vl = null;
@@ -24,19 +25,22 @@ public class ReaderTxt implements Reader {
 					ug = new UndirectedGraph(vl);
 					nm = new NeighbourhoodMatrix(ug.getNodes().size());
 				}else{
-					parseOtherLine(line);
-					
+					ArrayList<Vertex> edge = parseOtherLine(line);
+					System.out.println(edge);
+					nm.setElement(edge.get(0).getVertexNumber()-1, edge.get(1).getVertexNumber()-1, 1);
+					nm.setElement(edge.get(1).getVertexNumber()-1, edge.get(0).getVertexNumber()-1, 1);
 				}
-				
+				System.out.println(nm);
+				System.out.println();
 			}
-			
+			ug.setNeighbourhoodMatrix(nm);
 		}finally{
 			if(inputStream != null){
 				inputStream.close();
 			}
 		}
 		
-		return null;
+		return ug;
 	}
 	
 	private ArrayList<Vertex> parseFirstLine(String line){

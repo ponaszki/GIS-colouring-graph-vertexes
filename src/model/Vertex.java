@@ -35,8 +35,11 @@ public class Vertex {
 		nodeNumber = number;
 	}
 	
-	int getVertex(){
+	int getVertexNumber(){
 		return this.nodeNumber;
+	}
+	public String toString(){
+		return new Integer(this.nodeNumber).toString();
 	}
 	
 	
