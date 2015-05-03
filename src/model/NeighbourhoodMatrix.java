@@ -34,7 +34,7 @@ public class NeighbourhoodMatrix {
 	
 	public String toString(){
 		String result = new String();
-		result += "{";
+		result += "{\n";
 		for(int [] row : matrix){
 			result += "{";
 			int count = 0;

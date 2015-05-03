@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReaderTxt implements Reader {
+public class ReaderCsv implements Reader {
 
 	@Override
 	public UndirectedGraph readTXT(String filePath) throws IOException {
@@ -30,10 +30,13 @@ public class ReaderTxt implements Reader {
 					nm.setElement(edge.get(0).getVertexNumber()-1, edge.get(1).getVertexNumber()-1, 1);
 					nm.setElement(edge.get(1).getVertexNumber()-1, edge.get(0).getVertexNumber()-1, 1);
 				}
-				System.out.println(nm);
-				System.out.println();
+//				System.out.println(nm);
+//				System.out.println();
 			}
 			ug.setNeighbourhoodMatrix(nm);
+			ug.setAdjacentForAllVertexes();
+		}catch(NullPointerException e){
+			e.printStackTrace();
 		}finally{
 			if(inputStream != null){
 				inputStream.close();
@@ -46,9 +49,9 @@ public class ReaderTxt implements Reader {
 	private ArrayList<Vertex> parseFirstLine(String line){
 		String[] data = line.split(";");
 		ArrayList<Vertex> result = new ArrayList<Vertex>(data.length-1);
-		
+		int arrayIndex=0;
 		for(int i = 1; i<data.length; i++){
-			result.add(i-1, new Vertex(Integer.parseInt(data[i])));
+			result.add(i-1, new Vertex(Integer.parseInt(data[i]), arrayIndex++));
 		}
 		return result;
 		

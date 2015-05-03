@@ -4,13 +4,22 @@ import java.util.ArrayList;
 
 public class Vertex {
 	private int nodeNumber;
+	private int matrixIndex;
+	private int color;
 	private ArrayList <Vertex> adjNodes;
 	/**
 	 * Constructor creating graph node unrelated to other vertexes.
 	 * @param number - vertex number
 	 */
-	public Vertex(int number){
-		this.nodeNumber = number;
+	public Vertex(int vertexNumber, int matrixIndex){
+		this(vertexNumber);
+		this.matrixIndex = matrixIndex;
+	}
+	
+	public Vertex(int vertexNumber){
+		this.nodeNumber = vertexNumber;
+		this.matrixIndex = -1;
+		this.color = -1;
 		adjNodes = new ArrayList<Vertex>();
 	}
 	
@@ -27,8 +36,20 @@ public class Vertex {
 	 * Function that add adjacent vertex to 
 	 * @param node
 	 */
-	public void addNeighbour(Vertex node){
-		adjNodes.add(node);
+	public void addAdjacentVertex(Vertex v){
+		if(!adjNodes.contains(v))
+			adjNodes.add(v);
+	}
+	
+	public void setAdjacentVertexes(ArrayList<Vertex> adjVertexes){
+		adjNodes = adjVertexes;
+	}
+	public ArrayList<Vertex> getAdjacentVertexes(){
+		return this.adjNodes;
+	}
+	
+	public void eraseAllAdjacentNodes(){
+		this.adjNodes.clear();
 	}
 	
 	public void setVertexNumber(int number){
@@ -38,9 +59,37 @@ public class Vertex {
 	int getVertexNumber(){
 		return this.nodeNumber;
 	}
+	public int getMatrixIndex() {
+		return matrixIndex;
+	}
+
+	public void setMatrixIndex(int matrixIndex) {
+		this.matrixIndex = matrixIndex;
+	}
+
 	public String toString(){
 		return new Integer(this.nodeNumber).toString();
 	}
+
+	public boolean isColoured() {
+		if(this.color != -1)
+			return true;
+		return false;
+	}
+
+	public int getColor() {
+		// TODO Auto-generated method stub
+		return this.color;
+	}
 	
+	public void setColor(int color) {
+		this.color = color;
+	}
 	
+	public boolean equals (Vertex v){
+		if(this.matrixIndex == v.matrixIndex && this.nodeNumber == v.nodeNumber){
+			return true;
+		}
+		return false;
+	}
 }

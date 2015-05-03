@@ -10,11 +10,18 @@ public class MainClass {
 		    
 			return;
 		}else if(args.length ==1){
-			ReaderTxt reader = new ReaderTxt();
+			ReaderCsv reader = new ReaderCsv();
+			WriterCsv writer = new WriterCsv();
 			try {
-				UndirectedGraph graph = reader.readTXT(new String(args[0]));
+				String path = new String(args[0]);
+				UndirectedGraph graph = reader.readTXT(path);
 				System.out.println(graph);
 				SMAlgorithm sma = new SMAlgorithm(graph);
+				sma.process();
+				String outPath = null;
+				//nowa sciezka
+				outPath = writer.makeOutPathFromInPath(path);
+				writer.write(outPath, graph);
 				System.out.println(sma);
 				
 			} catch (IOException e) {	
