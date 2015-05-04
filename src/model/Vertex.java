@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Vertex {
+public class Vertex implements Comparable<Vertex>{
 	private int nodeNumber;
 	private int matrixIndex;
 	private int color;
@@ -86,10 +86,19 @@ public class Vertex {
 		this.color = color;
 	}
 	
+	public int getDegree(){
+		return adjNodes.size();
+	}
 	public boolean equals (Vertex v){
 		if(this.matrixIndex == v.matrixIndex && this.nodeNumber == v.nodeNumber){
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int compareTo(Vertex o) {
+		// TODO Auto-generated method stub
+		return o.getDegree() - this.getDegree();
 	}
 }

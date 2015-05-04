@@ -51,11 +51,11 @@ public class WriterCsv implements Writer {
 		
 	}
 	
-	public String makeOutPathFromInPath(String path){
+	public String makeOutPathFromInPath(String path, String algorithmName){
 		String ext = path.substring(path.lastIndexOf(".")+1);
 		String pth = path.substring(0,path.lastIndexOf("."));
 
-		pth+="Out." + ext;
+		pth+= algorithmName + "Out." + ext;
 		return pth;
 	}
 }

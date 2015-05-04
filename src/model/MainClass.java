@@ -15,14 +15,19 @@ public class MainClass {
 			try {
 				String path = new String(args[0]);
 				UndirectedGraph graph = reader.readTXT(path);
-				System.out.println(graph);
-				SMAlgorithm sma = new SMAlgorithm(graph);
-				sma.process();
-				String outPath = null;
-				//nowa sciezka
-				outPath = writer.makeOutPathFromInPath(path);
-				writer.write(outPath, graph);
-				System.out.println(sma);
+				UndirectedGraph graph2 = reader.readTXT(path);
+//				System.out.println(graph);
+				AlgorithmSM asm = new AlgorithmSM(graph);
+				AlgorithmLF alf = new AlgorithmLF(graph2);
+				asm.process();
+				alf.process();
+				String outPathASM = null, outPathALF = null;
+				outPathASM = writer.makeOutPathFromInPath(path, "SM");
+				outPathALF = writer.makeOutPathFromInPath(path, "LF");
+				writer.write(outPathASM, graph);
+				writer.write(outPathALF, graph2);
+				System.out.println(asm);
+				System.out.println(alf);
 				
 			} catch (IOException e) {	
 				e.printStackTrace();

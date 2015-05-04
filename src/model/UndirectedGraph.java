@@ -12,7 +12,7 @@ public class UndirectedGraph {
 		neighbourhoodMatrix = new NeighbourhoodMatrix();
 		colorSpace = new ArrayList<Integer>();
 	}
-	
+
 	public UndirectedGraph(ArrayList<Vertex> vl) {
 		this();
 		this.nodes = vl;
@@ -117,7 +117,7 @@ public class UndirectedGraph {
 
 	public String toString(){
 		String result = new String();
-		result = "Nodes:\n" + nodes.toString() + "NeigbourhoodMatrix\n"+ neighbourhoodMatrix.toString();
+		result = "Nodes:\n" + nodes.toString() + "\nNeigbourhoodMatrix\n"+ neighbourhoodMatrix.toString();
 		return result;
 	}
 	

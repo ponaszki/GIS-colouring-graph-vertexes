@@ -3,10 +3,10 @@ package model;
 import java.util.ArrayList;
 
 
-public class SMAlgorithm {
+public class AlgorithmSM {
 	private SimilarityMatrix c;
 	private UndirectedGraph graph;
-	public SMAlgorithm(UndirectedGraph ug) {
+	public AlgorithmSM(UndirectedGraph ug) {
 		graph = ug;
 	}
 	

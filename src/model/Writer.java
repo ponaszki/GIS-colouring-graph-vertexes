@@ -9,5 +9,5 @@ public interface Writer {
 	 * @param g - graf który ma być zapisany do pliku
 	 */
 	public void write(String path, UndirectedGraph g) throws IOException;
-	public String makeOutPathFromInPath(String path);
+	public String makeOutPathFromInPath(String path, String algorithmName);
 }
