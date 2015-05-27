@@ -22,7 +22,7 @@ public class AlgorithmSM {
 		int p = findMaximalMatrixElement(this.c);
 		System.out.println("p= "+p);
 
-		while(p>0){
+		while(p>=0){
 			for(int row = 0; row <this.c.MATRIX_SIZE; row++){
 				for(int col = 0; col <this.c.MATRIX_SIZE; col++){
 					if(c.getElement(row, col)==p){
