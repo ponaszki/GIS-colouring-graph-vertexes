@@ -16,7 +16,6 @@ public class MainClass {
 				String path = new String(args[0]);
 				UndirectedGraph graph = reader.readTXT(path);
 				UndirectedGraph graph2 = reader.readTXT(path);
-//				System.out.println(graph);
 				AlgorithmSM asm = new AlgorithmSM(graph);
 				AlgorithmLF alf = new AlgorithmLF(graph2);
 				asm.process();
