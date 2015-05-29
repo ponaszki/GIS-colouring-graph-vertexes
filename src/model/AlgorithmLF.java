@@ -10,6 +10,7 @@ public class AlgorithmLF implements GraphAlgorithm {
 	}
 	@Override
 	public boolean process() throws NullPointerException {
+		long st = System.nanoTime();
 		ArrayList<Vertex> vxs = sortVertexes(this.graph.getNodes());
 		
 		for(Vertex v : vxs){
@@ -21,6 +22,7 @@ public class AlgorithmLF implements GraphAlgorithm {
 				v.setColor(cl.get(0));
 			}
 		}
+		System.out.println("LF TIME: " + ((System.nanoTime()-st)/1000000) + "ms.");
 		return false;
 	}
 	

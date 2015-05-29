@@ -33,4 +33,8 @@ public class AlgorithmLF implements GraphAlgorithm {
 		
 		return vertexList;
 	}
+	
+	public UndirectedGraph getGraph(){
+		return graph;
+	}
 }

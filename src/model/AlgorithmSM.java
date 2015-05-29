@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import model.SimilarityMatrix;
+
 
 public class AlgorithmSM {
 	private SimilarityMatrix c;
@@ -15,16 +17,20 @@ public class AlgorithmSM {
 		if(nm == null){
 			throw new NullPointerException(new String("Nacierz sąsiedztwa jest pusta(null)."));
 		}
+		long startTime = System.nanoTime();
 		this.c = new SimilarityMatrix(nm);
+		long duration = (System.nanoTime() - startTime);
+		System.out.println("similarity Matrix Creation time:" + duration/1000000 + "ms." );
 		
-		System.out.println(this.c);
+		//System.out.println(this.c);
 		
 		int p = findMaximalMatrixElement(this.c);
 		System.out.println("p= "+p);
 
+		long startTime2 = System.nanoTime();
 		while(p>=0){
 			for(int row = 0; row <this.c.MATRIX_SIZE; row++){
-				for(int col = 0; col <this.c.MATRIX_SIZE; col++){
+				for(int col = row; col <this.c.MATRIX_SIZE; col++){
 					if(c.getElement(row, col)==p){
 						Vertex v1 = graph.getNode(row);
 						Vertex v2 = graph.getNode(col);
@@ -60,7 +66,8 @@ public class AlgorithmSM {
 			}
 			p--;
 		}
-		
+		long duration2 = (System.nanoTime() - startTime2);
+		System.out.println("Colouring time:" + duration2/1000000 + "ms." );
 		return true;
 	}
 	/**

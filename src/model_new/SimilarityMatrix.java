@@ -1,13 +1,13 @@
 package model_new;
 
-public class SimilarityMatrix extends NeighbourhoodMatrix {
+public class SimilarityMatrix extends model_new.NeighbourhoodMatrix {
 	
-	public SimilarityMatrix(NeighbourhoodMatrix nm) {
+	public SimilarityMatrix(model_new.NeighbourhoodMatrix nm) {
 		super(nm.MATRIX_SIZE);
 		createSimilarityMatrix(nm);
 	}
 	
-	private void createSimilarityMatrix(NeighbourhoodMatrix nm){
+	private void createSimilarityMatrix(model_new.NeighbourhoodMatrix nm){
 		for(int row =0; row<nm.MATRIX_SIZE; row++){
 			for(int col =0; col<nm.MATRIX_SIZE; col++){
 				if(row==col){

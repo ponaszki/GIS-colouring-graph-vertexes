@@ -15,13 +15,16 @@ public class AlgorithmSM {
 		if(nm == null){
 			throw new NullPointerException(new String("Nacierz sąsiedztwa jest pusta(null)."));
 		}
+		long startTime = System.nanoTime();
 		this.c = new SimilarityMatrix(nm);
+		long duration = (System.nanoTime() - startTime);
+		System.out.println("similarity Matrix Creation time:" + duration/1000000 + "ms." );
 		
-		System.out.println(this.c);
-		
+		//System.out.println(this.c);
 		int p = findMaximalMatrixElement(this.c);
 		System.out.println("p= "+p);
-
+		
+		long startTime2 = System.nanoTime();
 		while(p>=0){
 			for(int row = 0; row <this.c.MATRIX_SIZE; row++){
 				for(int col = 0; col <this.c.MATRIX_SIZE; col++){
@@ -54,13 +57,14 @@ public class AlgorithmSM {
 								v1.setColor(newC);
 								v2.setColor(newC);
 							}
-						}
+						} 
 					}
 				}
 			}
 			p--;
 		}
-		
+		long duration2 = (System.nanoTime() - startTime2);
+		System.out.println("Colouring time:" + duration2/1000000 + "ms." );
 		return true;
 	}
 	/**

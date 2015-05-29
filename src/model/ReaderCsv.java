@@ -26,7 +26,7 @@ public class ReaderCsv implements Reader {
 					nm = new NeighbourhoodMatrix(ug.getNodes().size());
 				}else{
 					ArrayList<Vertex> edge = parseOtherLine(line);
-					System.out.println(edge);
+					//System.out.println(edge);
 					nm.setElement(edge.get(0).getVertexNumber()-1, edge.get(1).getVertexNumber()-1, 1);
 					nm.setElement(edge.get(1).getVertexNumber()-1, edge.get(0).getVertexNumber()-1, 1);
 				}

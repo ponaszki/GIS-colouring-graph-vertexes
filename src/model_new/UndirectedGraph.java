@@ -167,6 +167,9 @@ public class UndirectedGraph {
 		this.colorSpace = colorSpace;
 	}
 	
+	public int getNumberOfColors(){
+		return colorSpace.size();
+	}
 	public void setNeighbourhoodMatrix(NeighbourhoodMatrix nm) {
 		this.neighbourhoodMatrix = nm;
 		for(Vertex v : this.nodes){

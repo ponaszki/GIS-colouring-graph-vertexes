@@ -6,7 +6,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		if(args.length <1){
-			System.err.println("Za mało argumentów");
+			System.err.println("Za malo argumentow");
 		    
 			return;
 		}else if(args.length ==1){
@@ -14,6 +14,7 @@ public class MainClass {
 			WriterCsv writer = new WriterCsv();
 			try {
 				String path = new String(args[0]);
+				//String path = new String("");
 				UndirectedGraph graph = reader.readTXT(path);
 				UndirectedGraph graph2 = reader.readTXT(path);
 				AlgorithmSM asm = new AlgorithmSM(graph);
@@ -25,8 +26,8 @@ public class MainClass {
 				outPathALF = writer.makeOutPathFromInPath(path, "LF");
 				writer.write(outPathASM, graph);
 				writer.write(outPathALF, graph2);
-				System.out.println(asm);
-				System.out.println(alf);
+	//			System.out.println(asm);
+	//			System.out.println(alf);
 				
 			} catch (IOException e) {	
 				e.printStackTrace();

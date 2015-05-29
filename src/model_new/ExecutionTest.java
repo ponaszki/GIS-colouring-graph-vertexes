@@ -1,6 +1,7 @@
 package model_new;
 import java.io.FileWriter;
 import java.io.IOException;
+
 public class ExecutionTest {
 	private String pathStart;
 	private int vertexNum;
@@ -8,24 +9,44 @@ public class ExecutionTest {
 	private SetTimer timer;
 	private long durationSM;
 	private long durationLF;
+	private int numberOfColorsLF;
+	private int numberOfColorsSM;
 	private GenerateGraphInput graph;
 	private static final String DELIMITER = ";";
 	private static final String NEW_LINE_SEPARATOR = "\n";
 	
-	public ExecutionTest(int v, int e, String pathStart){
+	public ExecutionTest(int v, int e, String pathStart, boolean createNewGraph){
 		// pathString = "C:\\studia\\GIS\\projekt\\GIS-colouring-graph-vertexes\\testFiles\\"
 		this.vertexNum = v;
 		this.edgeNum = e;
 		this.pathStart = pathStart;
-		GenerateGraphInput();
+		GenerateGraphInput();	//losowy graf
 		ColorGraph();
 		WriteInputGraphToCsv();
+	}
+	public int getNumberOfColorsSM() {
+		return numberOfColorsSM;
+	}
+	public void setNumberOfColorsSM(int numberOfColorsSM) {
+		this.numberOfColorsSM = numberOfColorsSM;
+	}
+	public int getNumberOfColorsLF() {
+		return numberOfColorsLF;
+	}
+	public void setNumberOfColorsLF(int numberOfColorsLF) {
+		this.numberOfColorsLF = numberOfColorsLF;
 	}
 	public long GetDurationLF(){
 		return this.durationLF;
 	}
 	public long GetDurationSM(){
 		return this.durationSM;
+	}
+	public long getColorsLF(){
+		return this.numberOfColorsLF;
+	}
+	public long getColorsSM(){
+		return this.numberOfColorsSM;
 	}
 	private void StartTimer(){
 		this.timer = new SetTimer();
@@ -34,6 +55,7 @@ public class ExecutionTest {
 		long duration = this.timer.getDuration()/1000000;
 		return duration;
 	}
+	
 	private void GenerateGraphInput(){
 		this.graph = new GenerateGraphInput(this.vertexNum, this.edgeNum, this.pathStart);
 	}
@@ -50,17 +72,19 @@ public class ExecutionTest {
 			StartTimer();
 			// mierze czas wykoniania SM
 			asm.process();
+			this.numberOfColorsSM = asm.getGraph().getNumberOfColors();
 			this.durationSM = EndTimer();
 			StartTimer();
 			alf.process();
+			this.numberOfColorsLF = alf.getGraph().getNumberOfColors();
 			this.durationLF = EndTimer();
 			String outPathASM = null, outPathALF = null;
 			outPathASM = writer.makeOutPathFromInPath(path, "SM");
 			outPathALF = writer.makeOutPathFromInPath(path, "LF");
 			writer.write(outPathASM, graph);
 			writer.write(outPathALF, graph2);
-			System.out.println(asm);
-			System.out.println(alf);
+			//System.out.println(asm);
+			//System.out.println(alf);
 			
 		} catch (IOException e) {	
 			e.printStackTrace();
